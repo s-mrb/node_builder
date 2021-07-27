@@ -56,7 +56,7 @@ Now to add Companies, Content and Questions view inside menu update the menu obj
    "menu": {
      "Dashboard": "/dashboard",
      "Users": "/users/0",
-     "Companies": "/company/0",
+     "Companies": "/companies/0",
      "Content": "/content",
      "Questions": "/questions",
      "Profile": "/profile",
@@ -106,7 +106,42 @@ Now whenever you need to run the code after making changes you have to run two c
 node server.js
 ```
 
-## 
+### Customization
+
+Run `node server.js` inside release and open the page (http://127.0.0.1:PORT/ROLE/login) in the browser. Since we have added member and admin roles, so we can use any of them in the url for login.
+For testing lets use `http://127.0.0.1:9000/admin/login`, use `admin@manaknight.com` and `a123456` as credentials. After loggin in you can see that order of the menu items and their name is the same as we defined in `configurations.json`:
+
+```js
+   "menu": {
+     "Dashboard": "/dashboard",
+     "Users": "/users/0",
+     "Companies": "/companies/0",
+     "Content": "/content",
+     "Questions": "/questions",
+     "Profile": "/profile",
+     "Logout": "/logout"
+   }
+```
+
+> Note: Currently you can only open `Dashboard`, `Users` and `Profile` views. `Logout` has no view, it just logs you out when you click it. On clicking `Companies`, `Content` and `Questions` you will be forwarded to corresponding routes as defined in above menu object, but non-default views are not visible by default that's why you get a page that just says **LIVE**, this means these routes do exist but not yet visible.
+
+So lets makes non-default routes visible, we will take `Companies` route as an example.
+
+- open `path2cloned_node_builder_repo/scripts/configurations.json`
+- search the route `/companies`, don't include page number, don't search `/companies/0`
+- You will find two objects for `/companies` route inside controller, one is for `admin` and one for `member`, this is because while using [schema generator](https://webhook.manaknightdigital.com/schema/pre) we specified to have two portals for `Companies` view.
+- Inside each of these two objects there is an attribute `view`, set it to true to enable the view of desired portal.
+- Since route to Companies view defined inside menu i.e. `/companies/0` uses pagination so we will also set `paginate` attribute to true.
+
+Now run the following commands again:
+
+```console
+<!-- inside scripts folder -->
+./initialize.sh
+
+<!-- inside release folder -->
+node server.js
+```
 
 # Need to know
 
