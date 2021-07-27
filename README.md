@@ -19,15 +19,18 @@ We will refer to [this](./wireframe.pdf) wireframe for this example.
   - Commonly you will just write `admin,members`, this means you want to establish two levels of privileges in your app aka `admin` and `members`. We will explore later the difference between levels of privileges.
 - In the `Models` box you will write name of the `table` and their associated `fields`, a model is just a table in database.
   - It is assumed that there is 1-1 correspondence between tables in database of this app and the views of this app i.e in the database for this app (above given wireframe) there must be a `companies` table corresponding to the view on **page 3** and same is true for `content` and rest of the views.
-  - You won't create `users` and `profile` view in `Models` box, they will be automatically created.
-  - if you want to tell the nodebuilder to create `companies` table and `content` table, use below code in `Models` box,note that you won't use `id` and `action` fields while defining Model in `Models` box
-
+  - if you want to tell the nodebuilder to create `companies` table and `content` table, use below code in `Models` box, note that you won't use `id` and `action` fields while defining Model in `Models` box
+  ```
+  companies:company_name, employees;
+  ```
+  - To make models for all the views we have in wireframe we will use:
   ```
   companies:company_name, employees;
   content:invite_text,register_text,register_header;
   company_users:company_name,employee,registered;
   questions:question_name,question_type,order,record_field_name,status;
   ```
+  - You won't create `users`, `profile`, `dashboard` and `logout` views in `Models` box, they will be automatically created.
 
 - Once you are done with Models hit `Convert Model` button, you will be asked to select data types for each field, hit `Generate JSON`, remeber that data type for each fields that ends with "text" should be "text".
 - After you are done with selecting data types for each field, you will get a `configuration` text in box below `Generate JSON` button. 
