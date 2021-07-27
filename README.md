@@ -21,11 +21,11 @@ We will refer to [this](./wireframe.pdf) wireframe for this example.
   - It is assumed that there is 1-1 correspondence between tables in database of this app and the views of this app i.e in the database for this app (above given wireframe) there must be a `companies` table corresponding to the view on **page 3** and same is true for `content` and rest of the views.
   - if you want to tell the nodebuilder to create `companies` table and `content` table, use below code in `Models` box, note that you won't use `id` and `action` fields while defining Model in `Models` box
   ```
-  companies:company_name, employees;
+  companies:company_name,employees;
   ```
   - To make models for all the views we have in wireframe we will use:
   ```
-  companies:company_name, employees;
+  companies:company_name,employees;
   content:invite_text,register_text,register_header;
   company_users:company_name,employee,registered;
   questions:question_name,question_type,order,record_field_name,status;
@@ -36,6 +36,13 @@ We will refer to [this](./wireframe.pdf) wireframe for this example.
 - After you are done with selecting data types for each field, you will get a `configuration` text in box below `Generate JSON` button. 
 - Copy the enire configuration text from the box that is directly underneath `Generate JSON` button.
 - Paste copied configurations in `path2cloned_node_builder_repo/scripts/configurations.json` if there were any previous configurations inside `configurations.json` then just replace it.
+
+
+> WARNING: Fields should not be preceded by any space, for example following would not work because it has space before `employees`:
+
+ ```
+  companies:company_name, employees;
+  ```
 
 ### Adding menus
 Open `configurations.json` and search `menu` object, you will see something like this:
@@ -56,9 +63,10 @@ Now to add Companies, Content and Questions view inside menu update the menu obj
    "menu": {
      "Dashboard": "/dashboard",
      "Users": "/users/0",
-     "Companies": "/companies/0",
-     "Content": "/content",
-     "Questions": "/questions",
+     "Companies":"/companies/0",
+     "Content":"/content",
+     "Company Users":"/company_users",
+     "Questions":"/questions",
      "Profile": "/profile",
      "Logout": "/logout"
    }
@@ -100,7 +108,7 @@ Now whenever you need to run the code after making changes you have to run two c
 
 ```console
 <!-- inside scripts folder -->
-./initialize.sh
+./generate.sh
 
 <!-- inside release folder -->
 node server.js
@@ -115,9 +123,10 @@ For testing lets use `http://127.0.0.1:9000/admin/login`, use `admin@manaknight.
    "menu": {
      "Dashboard": "/dashboard",
      "Users": "/users/0",
-     "Companies": "/companies/0",
-     "Content": "/content",
-     "Questions": "/questions",
+     "Companies":"/companies/0",
+     "Content":"/content",
+     "Company Users":"/company_users",
+     "Questions":"/questions",
      "Profile": "/profile",
      "Logout": "/logout"
    }
@@ -137,10 +146,16 @@ Now run the following commands again:
 
 ```console
 <!-- inside scripts folder -->
-./initialize.sh
+./generate.sh
 
 <!-- inside release folder -->
 node server.js
+```
+#### Translations
+You can see in the `Companies` view that one field is `company_name`, to convert it into `Company Name` search `translations` inside `configurations.js` and you can find `xyzcompany_name`, note the pattern `xyzFieldNameToBeTranslated`. The value of `xyzcompany_name` is the value to show in view instead of `company_name`
+Update it as:
+```json
+  "xyzcompany_name": "Company Name",
 ```
 
 # Need to know
