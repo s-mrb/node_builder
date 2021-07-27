@@ -9,7 +9,7 @@ This readme contains guide regarding the use of `nodebuilder`.
 ## Usagae via example wireframe
 We will refer to [this]() wireframe for this example.
 
-- clone [node_builder]() repository
+- clone [node_builder](http://104.225.217.239:3000/manaknight/paxifist) repository
 - Go to wireframe [schema generator](https://webhook.manaknightdigital.com/schema/pre)
 - From the top right radio buttons select node
 - In `Portals` input write comma separated portals you want to create for your app.
