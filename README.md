@@ -46,7 +46,7 @@ Open `configurations.json` and search `menu` object, you will see something like
    }
 ```
 It contains name to be displayed inside menu of app and the route to use when the view is clicked.
-Menu object included the `views` to be placed inside `menu` of app.Dashboard, Users, Profile and Logout are automatically added in menu that's why we did not defined them inside `Models` in schema-generator.
+Menu object included the `views` to be placed inside `menu` of app. Dashboard, Users, Profile and Logout are automatically added in menu that's why we did not defined them inside `Models` in schema-generator.
 Now to add Companies, Content and Questions view inside menu update the menu object as follows:
 
 ```js
