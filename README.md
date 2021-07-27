@@ -84,7 +84,7 @@ Uncomment db code in `server.js` if it is commneted and run inside `release`:
 ```console
 node server.js
 ```
-Above step is needed if you don't already created databse in MySQL server.
+Above step is needed if you didn't create databse in MySQL server.
 
 To seed the database with the sample data, run this inside `release` folder:
 
