@@ -7,7 +7,7 @@ This readme contains guide regarding the use of `nodebuilder`.
 `nodebuilder` is a tool to convert wireframes into MVP using a simple schema that defines your wireframe.
 
 ## Usagae via example wireframe
-We will refer to [this]() wireframe for this example.
+We will refer to [this](./wireframe.pdf) wireframe for this example.
 
 - clone [node_builder](http://104.225.217.239:3000/manaknight/paxifist) repository
 - Go to wireframe [schema generator](https://webhook.manaknightdigital.com/schema/pre)
