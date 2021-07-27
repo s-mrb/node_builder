@@ -26,6 +26,7 @@ We will refer to [this](./wireframe.pdf) wireframe for this example.
   company_users:company_name,employee,registered;
   questions:question_name,question_type,order,record_field_name,status;
   ```
-- Once you are done with Models hit `Convert Model` button, you will be asked to select data types for each field, hit `Generate JSON`, remeber that data type for each fields that ends with "text" should be "text". - After you are done with selecting data types for each field, you will get a `configuration` text in box below `Generate JSON` button. 
+- Once you are done with Models hit `Convert Model` button, you will be asked to select data types for each field, hit `Generate JSON`, remeber that data type for each fields that ends with "text" should be "text".
+- After you are done with selecting data types for each field, you will get a `configuration` text in box below `Generate JSON` button. 
 - Copy the enire configuration text from the box that is directly underneath `Generate JSON` button.
 - Paste copied configurations in `path2cloned_node_builder_repo/scripts/configurations.json` if there were any previous configurations inside `configurations.json` then just replace it.
