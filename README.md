@@ -139,7 +139,7 @@ So lets makes non-default routes visible, we will take `Companies` route as an e
 - open `path2cloned_node_builder_repo/scripts/configurations.json`
 - search the route `/companies`, don't include page number, don't search `/companies/0`
 - You will find two objects for `/companies` route inside controller, one is for `admin` and one for `member`, this is because while using [schema generator](https://webhook.manaknightdigital.com/schema/pre) we specified to have two portals for `Companies` view.
-- Inside each of these two objects there is an attribute `view`, set it to true to enable the view of desired portal.
+- Inside each of these two objects there is are attributes `view` and `is_crud`, set them to true to enable the view of desired portal.
 - Since route to Companies view defined inside menu i.e. `/companies/0` uses pagination so we will also set `paginate` attribute to true.
 
 Now run the following commands again:
@@ -158,6 +158,16 @@ Update it as:
   "xyzcompany_name": "Company Name",
 ```
 
+#### Copy Customized Controller
+If you need to make any changes to controllers inside `release` then copy that file inside `path2cloned_node_builder_repo/custom/mkdcore/controllers/$PORTAL/` and make appropriate changes, lets say file is `abc.js` and `$PORTAL` is admin, then the path of original file is `path2cloned_node_builder_repo/release/controllers/admin/abc.js`, and path of customized file is `path2cloned_node_builder_repo/mkdcore/custom/admin/abc.js`.
+To tell nodebuilder to use customized file rather then original one use find `copy` inside `configurations.js` and write:
+
+```js
+"copy":{
+  "path2cloned_node_builder_repo/custom/mkdcore/controllers/admin/abc.js":"path2cloned_node_builder_repo/release/controllers/admin/abc.js"
+}
+```
+
 # Need to know
 
 1. What actually is node_builder?
@@ -166,3 +176,4 @@ Update it as:
 1. Is there always 1-1 correspondence between views and table? 
     Got answer
 1. Information regarding Default routes? 
+1. Why `is_crud` and `view` both have to be set to true to make view visible, why not only `view`.
