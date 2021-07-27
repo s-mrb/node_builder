@@ -21,8 +21,10 @@ We will refer to [this](./wireframe.pdf) wireframe for this example.
   - if you want to tell the nodebuilder to create `companies` table and `content` table, use below code in `Models` box,note that you won't use `id` and `action` fields while defining Model in `Models` box
   
   ```
-  companies:company_name,employees;
+  companies:company_name, employees;
   content:invite_text,register_text,register_header;
+  company_users:company_name,employee,registered;
+  questions:question_name,question_type,order,record_field_name,status;
   ```
 - Once you are done with Models hit `Convert Model` button, you will be asked to select data types for each field, hit `Generate JSON` after you are done with selecting data types for each field, you will get a `configuration` text in box below `Generate JSON` button. 
 - Copy the enire configuration text from the box that is directly underneath `Generate JSON` button.
